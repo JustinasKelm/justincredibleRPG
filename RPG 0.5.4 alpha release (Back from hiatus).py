@@ -27,11 +27,6 @@ a1=68
 list1=[]
 inputs=[]
 attacks=[]
-listm6 = [ 1 , 1 ,"-","C","-","b", 1 , 1 ,"S", 1 ]
-listm7 = ["-", 1 , 1 , 1 ,"-","-","-", 1 , 1 , 1 ]
-listm8 = ["O", 1 ,"s", 1 ,"B","-", 1 ,"s", 1 ,"-"]
-listm9 = [ 1 ,"-", 1 , 1 , 1 ,"-", 1 ,"-", 1 ,"B"]
-listm0 = [ 1 ,"-","G", 1 , 1 ,"-", 1 ,"T", 1 ,"-"]
 font = pygame.font.SysFont("Ancient Modern Tales", 100)
 text = ""
 input_active = True
@@ -62,12 +57,27 @@ while run == True:
         txtsurf = font.render(text, True, white)
         screen.blit(txtsurf, txtsurf.get_rect(center = screen.get_rect().center))
         pygame.display.flip()
-def tutorial():
-    print("Available commands:")
-    print("While exploring: North ↑ , South ↓ , West ˂- , East -> , Info(i)")
-    print("While in special rooms: Open(o), Enter")
-    print("While fighting: Attack(a), Sattack, Mattack")
-    print("The Underground chest costs 5 money, going out of bounds loses 1 hp")
+def refresh():
+    screen.fill(bg) 
+    drawGrid()
+    outofbounds()
+    specialsq()
+    pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
+    pygame.display.flip()
+def refresh2():
+    screen.fill(bg) 
+    drawGrid()
+    outofbounds2()
+    specialsq2()
+    pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
+    pygame.display.flip()
+def refresh3():
+    screen.fill(bg) 
+    drawGrid()
+    outofbounds3()
+    specialsq3()
+    pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
+    pygame.display.flip()
 def enemy1():
     global hp
     global d
@@ -798,14 +808,6 @@ def chest2():
             csh-=25
             csh+=20
             print("You received a Pouch of Money")
-def map2():
-    print("L - Lobby, B - Boss, C - Chest, S - Shop, O - Overground Door","G - Casino","s - Bus stop","b - Mini boss","T - Train Station")
-    print("0 - Out of bounds, 1 - Room")
-    print ('[%s]' % ', '.join(map(str, listm6)))
-    print ('[%s]' % ', '.join(map(str, listm7)))
-    print ('[%s]' % ', '.join(map(str, listm8)))
-    print ('[%s]' % ', '.join(map(str, listm9)))
-    print ('[%s]' % ', '.join(map(str, listm0)))
 def boss1():
     global hp
     global d
@@ -1361,6 +1363,33 @@ def outofbounds():
     pygame.draw.rect(screen, red, pygame.Rect(542, 542, 68, 68))
     pygame.draw.rect(screen, red, pygame.Rect(542, 414, 68, 68))
     pygame.draw.rect(screen, red, pygame.Rect(542, 286, 68, 68))
+def outofbounds2():
+    pygame.draw.rect(screen, red, pygame.Rect(30, 158, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(542, 30, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(542, 158, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(286, 30, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(158, 414, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(158, 542, 68, 68))
+def outofbounds3():
+    pygame.draw.rect(screen, red, pygame.Rect(30, 158, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(30, 286, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(30, 414, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(30, 542, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(158, 158, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(286, 414, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(542, 286, 68, 68))
+    pygame.draw.rect(screen, red, pygame.Rect(542, 542, 68, 68))
+
+
+    font = pygame.font.SysFont("Ancient Modern Tales", 68)
+    txtsurf = font.render("B", True, white)
+    screen.blit(txtsurf,(60 - txtsurf.get_width() // 2, 585 - txtsurf.get_height() // 2))
+    txtsurf = font.render("C", True, white)
+    screen.blit(txtsurf,(321 - txtsurf.get_width() // 2, 455 - txtsurf.get_height() // 2))
+    txtsurf = font.render("S", True, white)
+    screen.blit(txtsurf,(450 - txtsurf.get_width() // 2, 200 - txtsurf.get_height() // 2))
+    txtsurf = font.render("O", True, white)
+    screen.blit(txtsurf,(195 - txtsurf.get_width() // 2, 70 - txtsurf.get_height() // 2))
 def specialsq():
     font = pygame.font.SysFont("Ancient Modern Tales", 68)
     txtsurf = font.render("B", True, white)
@@ -1371,6 +1400,31 @@ def specialsq():
     screen.blit(txtsurf,(450 - txtsurf.get_width() // 2, 200 - txtsurf.get_height() // 2))
     txtsurf = font.render("O", True, white)
     screen.blit(txtsurf,(195 - txtsurf.get_width() // 2, 70 - txtsurf.get_height() // 2))
+def specialsq2():
+    font = pygame.font.SysFont("Ancient Modern Tales", 68)
+    txtsurf = font.render("B", True, white)
+    screen.blit(txtsurf,(580 - txtsurf.get_width() // 2, 330 - txtsurf.get_height() // 2))
+    txtsurf = font.render("C", True, white)
+    screen.blit(txtsurf,(450 - txtsurf.get_width() // 2, 70 - txtsurf.get_height() // 2))
+    txtsurf = font.render("S", True, white)
+    screen.blit(txtsurf,(320 - txtsurf.get_width() // 2, 330 - txtsurf.get_height() // 2))
+    txtsurf = font.render("O", True, white)
+    screen.blit(txtsurf,(60 - txtsurf.get_width() // 2, 330 - txtsurf.get_height() // 2))
+    txtsurf = font.render("G", True, white)
+    screen.blit(txtsurf,(320 - txtsurf.get_width() // 2, 590 - txtsurf.get_height() // 2))
+def specialsq3():
+    font = pygame.font.SysFont("Ancient Modern Tales", 68)
+    txtsurf = font.render("B", True, white)
+    screen.blit(txtsurf,(60 - txtsurf.get_width() // 2, 70 - txtsurf.get_height() // 2))
+    txtsurf = font.render("S", True, white)
+    screen.blit(txtsurf,(450 - txtsurf.get_width() // 2, 70 - txtsurf.get_height() // 2))
+    txtsurf = font.render("S", True, white)
+    screen.blit(txtsurf,(320 - txtsurf.get_width() // 2, 330 - txtsurf.get_height() // 2))
+    txtsurf = font.render("B", True, white)
+    screen.blit(txtsurf,(580 - txtsurf.get_width() // 2, 460 - txtsurf.get_height() // 2))
+    txtsurf = font.render("T", True, white)
+    screen.blit(txtsurf,(320 - txtsurf.get_width() // 2, 590 - txtsurf.get_height() // 2))
+
 screen.fill(pygame.Color("black"))
 txtsurf = font.render("Welcome to Python RPG", True, red)
 screen.blit(txtsurf, txtsurf.get_rect(center = screen.get_rect().center))
@@ -1383,12 +1437,7 @@ txtsurf = font.render("Welcome to Python RPG", True, red)
 screen.blit(txtsurf, txtsurf.get_rect(center = screen.get_rect().center))
 pygame.display.update()
 pygame.time.delay(750)
-screen.fill(pygame.Color("black"))
-drawGrid()
-specialsq()
-outofbounds()
-pygame.draw.rect(screen, blue, pygame.Rect(30 + dist*2, 30 + dist*2, 68, 68))
-pygame.display.flip()
+refresh()
 while hp>0:
     events = pygame.event.get()
     for event in events:
@@ -1398,39 +1447,19 @@ while hp>0:
             if event.key == pygame.K_LEFT:
                 rwe -= 1
                 x1-=dist
-                screen.fill(pygame.Color("black"))
-                outofbounds()
-                drawGrid()
-                specialsq()
-                pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                pygame.display.flip()
+                refresh()
             elif event.key == pygame.K_RIGHT:
                 rwe += 1
                 x1+=dist
-                screen.fill(pygame.Color("black"))
-                drawGrid()
-                outofbounds()
-                specialsq()
-                pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                pygame.display.flip()
+                refresh()
             elif event.key == pygame.K_UP:
                 rns+=1
                 y1-=dist
-                screen.fill(pygame.Color("black"))
-                drawGrid()
-                outofbounds()
-                specialsq()
-                pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                pygame.display.flip()
+                refresh()
             elif event.key == pygame.K_DOWN:
                 rns-=1
                 y1+=dist
-                screen.fill(pygame.Color("black"))
-                drawGrid()
-                outofbounds()
-                specialsq()
-                pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                pygame.display.flip()
+                refresh()
             elif event.key == pygame.K_o:
                 chest1()
                 chest2()
@@ -1462,8 +1491,6 @@ while hp>0:
                         rwe-=5
                 else:
                     pass
-            elif event.key == pygame.K_t:
-                tutorial()
             elif event.key == pygame.K_i:
                 mov-=1
                 txtsurf = font.render("Magic Damage: " + str(md), True, white)
@@ -1484,9 +1511,6 @@ while hp>0:
                 screen.blit(txtsurf,(770 - txtsurf.get_width() // 2, 328 - txtsurf.get_height() // 2))
                 pygame.display.flip()
                 continue
-            elif event.key == pygame.K_m:
-                map2()
-                continue
             if mov==450 and rns<5:
                 print("You hear a loud cracking noise")
             if mov==500 and rns<5:
@@ -1498,6 +1522,7 @@ while hp>0:
                 txtsurf = font.render("Chest Room", True, white)
                 screen.blit(txtsurf,(770 - txtsurf.get_width() // 2, 625 - txtsurf.get_height() // 2))
                 pygame.display.flip()
+                #these 3 things could be optimised (list)
             if rns == 1 and rwe == 0:
                 font = pygame.font.SysFont("Ancient Modern Tales", 36)
                 txtsurf = font.render("Main Hall", True, white)
@@ -1684,36 +1709,19 @@ while hp>0:
                 if event.key == pygame.K_LEFT:
                     rwe += 1
                     x1+=dist
-                    screen.fill(pygame.Color("black"))
-                    drawGrid()
-                    outofbounds()
-                    specialsq()
-                    pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                    pygame.display.flip()
+                    refresh()
                 elif event.key == pygame.K_RIGHT:
                     rwe -= 1
                     x1-=dist
-                    screen.fill(pygame.Color("black"))
-                    drawGrid()
-                    outofbounds()
-                    specialsq()
-                    pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                    pygame.display.flip()
+                    refresh()
                 elif event.key == pygame.K_UP:
                     rns-=1
                     y1+=dist
-                    screen.fill(pygame.Color("black"))
-                    drawGrid()
-                    outofbounds()
-                    specialsq()
-                    pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
-                    pygame.display.flip()
+                    refresh()
                 elif event.key == pygame.K_DOWN:
                     rns+=1
                     y1-=dist
-                    screen.fill(pygame.Color("black"))
-                    drawGrid()
-                    outofbounds()
+                    refresh()
                     specialsq()
                     pygame.draw.rect(screen, blue, pygame.Rect(x1, y1, z1, a1))
                     pygame.display.flip()
